@@ -1,0 +1,84 @@
+# Copyright (C) 2015 EasyCPMods Move Daily Counters
+# This file is distributed under the same license as the EasyCPMods Move Daily Counters.
+msgid ""
+msgstr ""
+"Project-Id-Version: EasyCPMods Move Daily Counters 1.2.0\n"
+"Report-Msgid-Bugs-To: http://www.easycpmods.com\n"
+"POT-Creation-Date: 2015-04-14 08:51:07+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-04-22 11:32+0100\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sl_SI\n"
+"X-Generator: Poedit 1.7.5\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+
+#: move-daily-counters.php:214
+msgid "Records moved: %s"
+msgstr "Premaknjenih zapisov: %s"
+
+#: move-daily-counters.php:230
+msgid "Move Daily Counters Settings"
+msgstr "Nastavitve Move Daily Counters"
+
+#: move-daily-counters.php:235
+msgid "Move records older then (in days):"
+msgstr "Premakni zapise starejše od (dni):"
+
+#: move-daily-counters.php:238
+msgid "Record threshold:"
+msgstr "Meja brisanja:"
+
+#: move-daily-counters.php:241
+msgid "Run this script:"
+msgstr "Poganjaj to skripto:"
+
+#: move-daily-counters.php:243
+msgid "Manually"
+msgstr "Ročno"
+
+#: move-daily-counters.php:244
+msgid "Daily"
+msgstr "Dnevno"
+
+#: move-daily-counters.php:246
+msgid "Save settings"
+msgstr "Shrani nastavitve"
+
+#: move-daily-counters.php:250
+msgid "Maximum time for getting daily counts: %s"
+msgstr "Največji čas potreben za branje dnevnih števcev: %s"
+
+#: move-daily-counters.php:251
+msgid "Minimum time for getting daily counts: %s"
+msgstr "Najmanjši čas potreben za branje dnevnih števcev: %s"
+
+#: move-daily-counters.php:252
+msgid "Time gained for every visitor (in seconds): %s"
+msgstr "Prihranjen čas za vsakega obiskovalca: %s"
+
+#: move-daily-counters.php:253
+msgid "Average time gained in one day (%s hits): %s"
+msgstr "Povprečen prihranjen čas v enem dnevu (%s zadetkov): %s"
+
+#: move-daily-counters.php:256
+msgid "Records currently in the table: %s"
+msgstr "Zapisov trenutno v tabeli: %s"
+
+#: move-daily-counters.php:257
+msgid "Move records now"
+msgstr "Premakni zapise sedaj"
+
+#: move-daily-counters.php:262
+msgid "Ad hit statistics"
+msgstr "Statistika zadetkov"
+
+#: ddc-pro.php:75
+msgid "Total daily ad views"
+msgstr "Skupaj prikazanih oglasov"
+
+#: ddc-pro.php:80
+msgid "Number of different ads seen"
+msgstr "Število videnih oglasov"
