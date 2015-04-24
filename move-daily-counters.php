@@ -4,7 +4,7 @@ Plugin Name: Move Daily Counters
 Plugin URI: http://www.easycpmods.com
 Description: Move Daily Counters is a Classipress plugin that will move values from a Classipress table where daily counters are stored to a plugin table. Why? Because a large table with daily counters will make your site very slow.
 Author: Easy CP Mods
-Version: 1.3.0
+Version: 1.3.1
 Author URI: http://www.eayscpmods.com
 */
 

@@ -3,7 +3,7 @@ Contributors: easycpmods
 Tags: classipress, speed, load, faster, stats, save time
 Requires at least: 3.5
 Tested up to: 4.1.3
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
