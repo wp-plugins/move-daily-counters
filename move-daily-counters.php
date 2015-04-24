@@ -4,7 +4,7 @@ Plugin Name: Move Daily Counters
 Plugin URI: http://www.easycpmods.com
 Description: Move Daily Counters is a Classipress plugin that will move values from a Classipress table where daily counters are stored to a plugin table. Why? Because a large table with daily counters will make your site very slow.
 Author: Easy CP Mods
-Version: 1.2.0
+Version: 1.3.0
 Author URI: http://www.eayscpmods.com
 */
 
@@ -59,12 +59,36 @@ Author URI: http://www.eayscpmods.com
       update_option( 'ecpm_ddc_record_threshold', '0' );
       update_option( 'ecpm_ddc_freq', 'manual' );
       update_option( 'ecpm_ddc_installed', 'yes' );
+      update_option( 'ecpm_ddc_remove_data', '' );
+      update_option( 'ecpm_ddc_move_back_data', '' );            
     }
   }
   
   function ecpm_ddc_deactivate() {                                   
     update_option( 'ecpm_ddc_freq', 'manual' );
     wp_clear_scheduled_hook('ecpm_move_daily_counters');
+    
+    $ecpm_ddc_move_back_data = get_option('ecpm_ddc_move_back_data');
+    $ecpm_ddc_remove_data = get_option('ecpm_ddc_remove_data');
+    
+    if ($ecpm_ddc_move_back_data == 'on')
+      $moved = ecpm_get_data('moveback');
+      
+    if ($ecpm_ddc_remove_data == 'on') {
+       delete_option( 'ecpm_ddc_installed' );
+       delete_option( 'ecpm_ddc_leave_days' );
+       delete_option( 'ecpm_ddc_record_threshold' );
+       delete_option( 'ecpm_ddc_freq' );
+       delete_option( 'ecpm_ddc_installed' );
+       delete_option( 'ecpm_ddc_remove_data' );
+       delete_option( 'ecpm_ddc_move_back_data' );
+       delete_option( 'ecpm_ddc_max_time' );
+       delete_option( 'ecpm_ddc_min_time' );
+       delete_option( 'ecpm_ddc_avg_hits' );
+       
+       global $table_prefix, $wpdb;
+       $wpdb->query("DROP TABLE IF EXISTS ".$wpdb->prefix."ecpm_ddc");
+    }  
   }
   
   function ecpm_ddc_plugins_loaded() {
@@ -88,6 +112,10 @@ Author URI: http://www.eayscpmods.com
           } else
             $return_count = 0;
           break;
+        
+        case 'moveback':
+          $return_count = move_data_back($wpdb);
+          break;  
       }
       return $return_count;
   }
@@ -149,6 +177,16 @@ Author URI: http://www.eayscpmods.com
     return $result;
   }
   
+  function move_data_back($wpdb) {
+    // copy data to original table
+    $wpdb->query("INSERT INTO $wpdb->cp_ad_pop_daily SELECT * FROM ".$wpdb->prefix."ecpm_ddc");
+    
+    // delete data from ecpm table
+    $result = $wpdb->query("DELETE FROM ".$wpdb->prefix."ecpm_ddc");
+    
+    return $result;
+  }
+  
   function ddc_table_create () {
     global $wpdb;
 
@@ -187,7 +225,19 @@ Author URI: http://www.eayscpmods.com
   	
   	if( isset( $_POST['ecpm_ddc_submit'] ) )
   	{
-  		if ( !isset($_POST[ 'ecpm_ddc_leave_days' ]) )
+  		
+      if ( !isset($_POST[ 'ecpm_ddc_remove_data' ]) )
+        $ecpm_ddc_remove_data = '';
+      else
+        $ecpm_ddc_remove_data = $_POST[ 'ecpm_ddc_remove_data' ];
+        
+      if ( !isset($_POST[ 'ecpm_ddc_move_back_data' ]) )
+        $ecpm_ddc_move_back_data = '';
+      else
+        $ecpm_ddc_move_back_data = $_POST[ 'ecpm_ddc_move_back_data' ];
+      
+
+      if ( !isset($_POST[ 'ecpm_ddc_leave_days' ]) )
         $ecpm_ddc_leave_days = '';
       else {
         $ecpm_ddc_leave_days = $_POST[ 'ecpm_ddc_leave_days' ];
@@ -218,6 +268,8 @@ Author URI: http://www.eayscpmods.com
       update_option( 'ecpm_ddc_leave_days' , $ecpm_ddc_leave_days );
       //update_option( 'ecpm_ddc_freq' , $ecpm_ddc_freq );
       update_option( 'ecpm_ddc_record_threshold' , $ecpm_ddc_record_threshold );
+      update_option( 'ecpm_ddc_move_back_data', $ecpm_ddc_move_back_data );
+      update_option( 'ecpm_ddc_remove_data', $ecpm_ddc_remove_data );
   
       ?>
           <div id="message" class="updated">
@@ -239,6 +291,9 @@ Author URI: http://www.eayscpmods.com
     $ecpm_ddc_record_threshold = get_option('ecpm_ddc_record_threshold');
     $ecpm_ddc_freq = get_option('ecpm_ddc_freq');
     $time_diff = get_option('ecpm_ddc_max_time') - get_option('ecpm_ddc_min_time');
+    
+    $ecpm_ddc_move_back_data = get_option('ecpm_ddc_move_back_data');
+    $ecpm_ddc_remove_data = get_option('ecpm_ddc_remove_data');
 
     $ecpm_ddc_avg_hits = get_option('ecpm_ddc_avg_hits');
     $ecpm_ddc_avg_time_saved = $ecpm_ddc_avg_hits * $time_diff;
@@ -249,7 +304,7 @@ Author URI: http://www.eayscpmods.com
   		<div id="ddcsetting">
   			<h2><?php echo _e('Move Daily Counters Settings', ECPM_DDC); ?></h2>
         <hr>
-        <table width="100%" border=0 cellspacing=0 cellpadding=5><tr><td valign="top">
+        <table width="100%" border=0 cellspacing=5 cellpadding=10><tr><td valign="top">
         <form id='ddcsettingform' method="post" action="">
           <h3><?php echo _e('Move records older then (in days):', ECPM_DDC); ?>
           <Input type='text' size='3' Name ='ecpm_ddc_leave_days' value='<?php echo $ecpm_ddc_leave_days;?>'></h3>
@@ -268,10 +323,18 @@ Author URI: http://www.eayscpmods.com
             echo _e('Manually', ECPM_DDC);
           } 
           ?></h3>
+          <hr>
+          <p><strong><?php echo _e('Plugin deactivation', DM_OCA); ?></strong></p>
+          <p>
+          <Input type='checkbox' Name='ecpm_ddc_move_back_data' <?php echo ($ecpm_ddc_move_back_data == 'on' ? 'checked':'') ;?> >
+          <?php echo _e('Move daily counters data back', DM_OCA); ?><br>
+          <Input type='checkbox' Name='ecpm_ddc_remove_data' <?php echo ($ecpm_ddc_remove_data == 'on' ? 'checked':'') ;?> >
+          <?php echo _e('Remove all settings', DM_OCA); ?>
+          </p>
  				  <input type="submit" id="ecpm_ddc_submit" name="ecpm_ddc_submit" class="button-primary" value="<?php _e('Save settings', ECPM_DDC); ?>" />
   			</form>
         </td>
-        <td valign="bottom" align="left">
+        <td valign="top" align="left">
           <h3><?php echo sprintf( __( 'Maximum time for getting daily counts: %s', ECPM_DDC ), '<font size=+1>'.round(get_option('ecpm_ddc_max_time'), 4).'</font>' );?></h3>
           <h3><?php echo sprintf( __( 'Minimum time for getting daily counts: %s', ECPM_DDC ), '<font size=+1>'.round(get_option('ecpm_ddc_min_time'), 4).'</font>' );?></h3>
           <h3><?php echo sprintf( __( 'Time gained for every visitor (in seconds): %s', ECPM_DDC ), '<font size=+2>'.round($time_diff, 4).'</font>' );?></h3>

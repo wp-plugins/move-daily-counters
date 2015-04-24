@@ -2,76 +2,88 @@
 # This file is distributed under the same license as the EasyCPMods Move Daily Counters.
 msgid ""
 msgstr ""
-"Project-Id-Version: EasyCPMods Move Daily Counters 1.2.0\n"
+"Project-Id-Version: EasyCPMods Move Daily Counters 1.3.0\n"
 "Report-Msgid-Bugs-To: http://www.easycpmods.com\n"
 "POT-Creation-Date: 2015-04-1410:14:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-04-22 11:32+0100\n"
+"PO-Revision-Date: 2015-04-24 10:51+0100\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en\n"
 "X-Generator: Poedit 1.7.5\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 
-#: move-daily-counters.php:214
+#: move-daily-counters.php:285
 msgid "Records moved: %s"
 msgstr ""
 
-#: move-daily-counters.php:230
+#: move-daily-counters.php:305
 msgid "Move Daily Counters Settings"
 msgstr ""
 
-#: move-daily-counters.php:235
+#: move-daily-counters.php:309
 msgid "Move records older then (in days):"
 msgstr ""
 
-#: move-daily-counters.php:238
+#: move-daily-counters.php:312
 msgid "Record threshold:"
 msgstr ""
 
-#: move-daily-counters.php:241
+#: move-daily-counters.php:315
 msgid "Run this script:"
 msgstr ""
 
-#: move-daily-counters.php:243
+#: move-daily-counters.php:318
 msgid "Manually"
 msgstr ""
 
-#: move-daily-counters.php:244
+#: move-daily-counters.php:319
 msgid "Daily"
 msgstr ""
 
-#: move-daily-counters.php:246
+#: move-daily-counters.php:327
+msgid "Plugin deactivation"
+msgstr ""
+
+#: move-daily-counters.php:330
+msgid "Move daily counters data back"
+msgstr ""
+
+#: move-daily-counters.php:332
+msgid "Remove all settings"
+msgstr ""
+
+#: move-daily-counters.php:334
 msgid "Save settings"
 msgstr ""
 
-#: move-daily-counters.php:250
+#: move-daily-counters.php:338
 msgid "Maximum time for getting daily counts: %s"
 msgstr ""
 
-#: move-daily-counters.php:251
+#: move-daily-counters.php:339
 msgid "Minimum time for getting daily counts: %s"
 msgstr ""
 
-#: move-daily-counters.php:252
+#: move-daily-counters.php:340
 msgid "Time gained for every visitor (in seconds): %s"
 msgstr ""
 
-#: move-daily-counters.php:253
+#: move-daily-counters.php:341
 msgid "Average time gained in one day (%s hits): %s"
 msgstr ""
 
-#: move-daily-counters.php:256
+#: move-daily-counters.php:344
 msgid "Records currently in the table: %s"
 msgstr ""
 
-#: move-daily-counters.php:257
+#: move-daily-counters.php:345
 msgid "Move records now"
 msgstr ""
 
-#: move-daily-counters.php:262
+#: move-daily-counters.php:350
 msgid "Ad hit statistics"
 msgstr ""
 

@@ -2,8 +2,8 @@
 Contributors: easycpmods
 Tags: classipress, speed, load, faster, stats, save time
 Requires at least: 3.5
-Tested up to: 4.1.1
-Stable tag: 1.2.0
+Tested up to: 4.1.3
+Stable tag: 1.3.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -36,6 +36,9 @@ Waiting for first question.
 
 == Changelog ==
 
+= 1.3.0 =
+* Added options for moving back the data and deleting settings on plugin deactivation
+* 
 = 1.2.0 =
 * Added new statistical features
 
@@ -58,6 +61,7 @@ Feature list:
 * Show you how much time you gained with this plugin
 * Language files if you would like to translate the plugin
 * Moving of data can only be run manually
+* Option to move the data back on plugin deactivation
 
 <strong>PRO version</strong>
 
@@ -65,4 +69,5 @@ Feature list:
 * Show you how much time you gained with this plugin
 * Language files if you would like to translate the plugin
 * Moving of data can be run manually or <strong>automatically on daily basis - recommended</strong>
+* Option to move the data back on plugin deactivation
 * Show you some useful <strong>statistics</strong> that you can not see from main Classipress installation
