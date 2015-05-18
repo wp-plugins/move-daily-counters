@@ -4,7 +4,7 @@ Plugin Name: Move Daily Counters
 Plugin URI: http://www.easycpmods.com
 Description: Move Daily Counters is a Classipress plugin that will move values from a Classipress table where daily counters are stored to a plugin table. Why? Because a large table with daily counters will make your site very slow.
 Author: Easy CP Mods
-Version: 1.3.4
+Version: 1.3.5
 Author URI: http://www.eayscpmods.com
 */
 
@@ -305,7 +305,7 @@ Author URI: http://www.eayscpmods.com
   			<h2><?php echo _e('Move Daily Counters Settings', ECPM_DDC); ?></h2>
         <hr>
         <strong>The development of this plugin is discontinued!</strong> There is a new plugin that does the same thing with some additions.<br>
-        <h3>Please download a new plugin called <a href="https://wordpress.org/plugins/faster-with-stats">Faster with stats<a>.<h3>
+        <h3>Please download a new plugin called <a href="https://wordpress.org/plugins/faster-with-stats">Faster with stats<a>.</h3>
          
         <table width="100%" border=0 cellspacing=5 cellpadding=10><tr><td valign="top">
         <form id='ddcsettingform' method="post" action="">
