@@ -3,13 +3,19 @@ Contributors: easycpmods
 Tags: classipress, speed, load, faster, stats, save time
 Requires at least: 3.5
 Tested up to: 4.1.3
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Move Daily Counters will make your Classipress site load faster. 
 
 == Description ==
+
+<strong>The development of this plugin is discontinued!
+There is a new plugin that does the same thing with some additions.
+Please download a new plugin called <a href="https://wordpress.org/plugins/faster-with-stats">Faster with stats<a>.</strong>
+
+
 
 There is one table on Classipress installation that can become huge after some time. This table stores daily counters for every ad. Here is a plugin to speed up Classipress called <strong>Move Daily Counters</strong> that will clear this table on daily basis (or manually) with parameters that you specify.
 
